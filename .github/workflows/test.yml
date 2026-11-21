@@ -36,3 +36,14 @@ jobs:
 
       - name: Run Forge tests
         run: forge test -vvv
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run Python tests and demo
+        run: |
+          pip install -e "python[test]"
+          pytest python
+          python -m agentpay.demo
